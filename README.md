@@ -70,4 +70,4 @@ console.log(
 ```
 
 
-# W.I.P
+# More examples to come...
