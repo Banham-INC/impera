@@ -1,11 +1,4 @@
-# Impera
-
-Simple validation library built in Typescript. Fully typesafe conditioning - Allows for multiple/single validators with multiple/single inputs.
-
-### Example
-
-```ts
-import { Impera } from "@baninc/impera";
+import { Impera } from "./src";
 
 const validator = new Impera({
   auth: {
@@ -17,11 +10,7 @@ const validator = new Impera({
     },
   },
 });
-```
 
-_Single Rule Validtations_
-
-```ts
 const authRuleSetEmail = validator.ruleSet("auth").single("isEmail");
 console.log(authRuleSetEmail.validate("not-email.com"));
 
@@ -37,9 +26,9 @@ const authRuleSetEmailCon = validator
   .single("isEmail")
   .validateConditions({
     isEmail: "Not valid email.",
-  });
+  })
 
-console.log(authRuleSetEmailCon.validate("not-valid-email.com"));
+console.log(authRuleSetEmailCon.validate("not-valid-email.com"))
 
 /* Output:
     {
@@ -48,12 +37,11 @@ console.log(authRuleSetEmailCon.validate("not-valid-email.com"));
     }
 */
 
-console.log(
-  authRuleSetEmailCon.validateMultiple([
-    "not-valid-email.com",
-    "valid@email.com",
-  ])
-);
+
+console.log(authRuleSetEmailCon.validateMultiple([
+  "not-valid-email.com",
+  "valid@email.com"
+]))
 
 /* Output:
   {
@@ -67,7 +55,3 @@ console.log(
     },
   }
 */
-```
-
-
-# W.I.P

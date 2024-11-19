@@ -31,7 +31,7 @@ export class ImperaHandler<Keys extends ((s: any) => boolean)[], Z> {
       [z in Z]: string;
     }>
   ) {
-    this._conditions = returnMessages;
+    this._conditions = returnMessages ? returnMessages : this._conditions;
     const returns: Record<
       string,
       {
@@ -63,7 +63,7 @@ export class ImperaHandler<Keys extends ((s: any) => boolean)[], Z> {
       [z in Z]: string;
     }>
   ): ValidStatement {
-    this._conditions = returnMessages;
+    this._conditions = returnMessages ? returnMessages : this._conditions;
     const returnedMapped = this._fns.map((z) => z(value));
     let returnedState: ValidStatement = {
       value: true,
@@ -75,8 +75,8 @@ export class ImperaHandler<Keys extends ((s: any) => boolean)[], Z> {
       if (!v) {
         returnedState = {
           value: false,
-          message: returnMessages
-            ? (returnMessages[rawFunction.name as Z] as string)
+          message: this._conditions
+            ? (this._conditions[rawFunction.name as Z] as string)
             : defaultMessage,
         };
       }

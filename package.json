@@ -1,5 +1,5 @@
 {
-  "name": "impera",
+  "name": "@banic/impera",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
